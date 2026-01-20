@@ -132,7 +132,7 @@ routes.patch('/:id', async(req,res)=>{
 
         // SENDING THE UPDATED CONTACT TO THE FRONT-END
 
-        res.json(updated_contact)
+        res.json(`Hurray!! Successful !! Contact with the name: ${updated_contact.name} successfully Updated`)
 
 
 
