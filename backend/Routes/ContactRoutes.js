@@ -9,7 +9,7 @@ routes.post('/add-contact',async(req, res)=>{
 
     // RECEIVE THE DATA FROM FRONTEND VIA req.body
 
-    const {name, phonenumber, email} = req.body
+    const {name, phonenumber, email, createdBy} = req.body
 
 
 
@@ -27,8 +27,8 @@ routes.post('/add-contact',async(req, res)=>{
     const new_contact = await Contacts.create({
         name,
         phonenumber,
-        email
-
+        email,
+        createdBy
     })
 
     // AFTER ADDING SEND MESSAGE TO THE FRONT END WITH THE CREATION OF CONTACT AS SUCCESSFUL
@@ -41,10 +41,11 @@ routes.post('/add-contact',async(req, res)=>{
     }catch(err){
 
         res.json({
-            errmsg: err.message
+            message: err.message
         })
     }
 
+    
 
 
 })
@@ -58,9 +59,7 @@ routes.get('/all-contacts',async(req, res)=>{
 
     // GETTING ALL THE CONTACTS FROM MONGO DB
 
-    const all_contacts = await Contacts.find()
-
-    console.log(all_contacts);
+    const all_contacts = await Contacts.find().populate("createdBy", "name")
     
 
     // SENDING ALL THE CONTACTS AS JSON RESPONSE 
@@ -72,7 +71,7 @@ routes.get('/all-contacts',async(req, res)=>{
 
         res.json({
 
-            error_message: err.message
+            message: err.message
         })
     }
 

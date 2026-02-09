@@ -1,20 +1,42 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 import { FaBackward } from 'react-icons/fa' 
+import { UserContext } from '../../App';
 
 
 
 const AddContact = () => {
-
+  
 
   const {register, reset, formState: {errors}, handleSubmit} = useForm()
 
   const navigate = useNavigate()
 
+  const {user, setUser} = useContext(UserContext);
+
+  useEffect(()=>{
+
+    if(!user){
+
+      alert('Please Log In to Add Contact')
+      navigate('/log-in')
+    }
+
+  },[])
+
+
   const add_to_mongodb = (data)=>{
+
+    const dataTosend = {
+      ...data,
+      createdBy: user._id,
+    };
+
+    console.log(dataTosend);
+
 
     fetch("http://localhost:3000/contacts/add-contact", {
       method: "POST",
@@ -22,14 +44,13 @@ const AddContact = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataTosend),
+      
     }).then(async (res) => {
       const response = await res.json();
       alert(`${response.message}`);
       reset();
     });
-
-
   }
 
   const backBtn = ()=>{
@@ -38,7 +59,15 @@ const AddContact = () => {
 
   }
 
+
+  if(!user){
+
+    return null
+
+  }else{
+
   return (
+
     <div>
       <Form onSubmit={handleSubmit(add_to_mongodb)}>
         <Form.Group className="mb-3" controlId="formBasicName">
@@ -76,7 +105,8 @@ const AddContact = () => {
       <FaBackward tabIndex={0} onClick={backBtn}/>
 
     </div>
-  );
+  )}
+
 }
 
 export default AddContact

@@ -18,8 +18,13 @@ const contact_schema = new mongoose.Schema({
     email: {
         type: String,
         required: true
-    }
+    },
 
+    createdBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+        required: true
+    }
 
 }, {timestamps: true})
 
