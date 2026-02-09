@@ -25,7 +25,9 @@ const TopNavbar = () => {
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand as={Link} to="#">
+            React-Bootstrap
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -38,20 +40,30 @@ const TopNavbar = () => {
               {user ? (
                 <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
               ) : (
-                <Nav.Link href="/log-in">Log In</Nav.Link>
+                <Nav.Link as={Link} to="/log-in">
+                  Log In
+                </Nav.Link>
               )}
 
               {!user && (
-                <Nav.Link href="/sign-up">Sign Up</Nav.Link>
-              ) }
-
-              {user?.role === "Admin" ? (
-                <Nav.Link href="/log-in">Settings</Nav.Link>
-              ) : (
-                <Nav.Link href="#">Contact Admin</Nav.Link>
+                <Nav.Link as={Link} to="/sign-up">
+                  Sign Up
+                </Nav.Link>
               )}
 
-              <Nav.Link href="#">Support Ticket?</Nav.Link>
+              {user?.role === "Admin" ? (
+                <Nav.Link as={Link} to="/log-in">
+                  Settings
+                </Nav.Link>
+              ) : (
+                <Nav.Link as={Link} to="#">
+                  Contact Admin
+                </Nav.Link>
+              )}
+
+              <Nav.Link as={Link} to="#">
+                Support Ticket?
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
