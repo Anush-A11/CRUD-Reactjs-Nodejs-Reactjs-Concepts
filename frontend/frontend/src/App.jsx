@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/HeaderFolder/Header";
 import Footer from "./components/FooterFolder/Footer";
@@ -10,7 +11,6 @@ import EditContacts from "./components/EditContacts/EditContacts";
 import Usersignup from "./components/UserSignup/Usersignup";
 import Usersignin from "./components/UserSignin/Usersignin";
 import TopNavbar from "./components/Navbar/TopNavbar";
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 export  const UserContext = createContext();
