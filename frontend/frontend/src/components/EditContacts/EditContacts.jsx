@@ -19,20 +19,18 @@ const EditContacts = () => {
 
   const add_to_mongodb = (data)=>{
 
-    fetch(`http://localhost:3000/contacts/${id}`,{
-
+    fetch(`http://3.87.45.74/contacts/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(data)        
-
-    }).then(async(res)=>{
-      const response = await res.json()
-      alert(`${response}`)
-      navigate('/view-contacts')
-    })
+      body: JSON.stringify(data),
+    }).then(async (res) => {
+      const response = await res.json();
+      alert(`${response}`);
+      navigate("/view-contacts");
+    });
 
   }
 

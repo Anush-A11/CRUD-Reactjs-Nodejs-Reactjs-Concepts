@@ -17,40 +17,39 @@ const Usersignin = () => {
 
     function sendsSignIn_data_to_mongodb(data){
 
-        fetch("http://localhost:3000/user/sign-in",{
-
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-
-
-        }).then(async(res)=>{
-
-            const response = await res.json()
-            if(res.ok){
-            localStorage.setItem("token", response.token)
-            localStorage.setItem("user", JSON.stringify({_id: response.id ,name: response.name, email: response.email, role: response.role}))
-            alert("Login Successful");
-              setUser({
-                id: response.id,
+        fetch("http://3.87.45.74/user/sign-in", {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }).then(async (res) => {
+          const response = await res.json();
+          if (res.ok) {
+            localStorage.setItem("token", response.token);
+            localStorage.setItem(
+              "user",
+              JSON.stringify({
+                _id: response.id,
                 name: response.name,
                 email: response.email,
                 role: response.role,
-              });
-              navigate("/");
-
-          }else{
-              alert(response.message)
-              reset()
-            }
-
-
-
-
-        })
+              }),
+            );
+            alert("Login Successful");
+            setUser({
+              id: response.id,
+              name: response.name,
+              email: response.email,
+              role: response.role,
+            });
+            navigate("/");
+          } else {
+            alert(response.message);
+            reset();
+          }
+        });
 
     }
 

@@ -20,17 +20,17 @@ const ViewContacts = () => {
 
   useEffect(()=>{
 
-    fetch("http://localhost:3000/contacts/all-contacts", {
+    fetch("http://3.87.45.74/contacts/all-contacts", {
       method: "GET",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
-      }
-    }).then(async(res) => {
-      const all_contacts = await res.json() // GETTING ALL CONTACTS FROM MONGO DB
-      setArrayContacts(all_contacts)  // SETTING ALL CONTACTS INSIDE THE STATE FOR DISPLAY IN JSX/HTML    
-      setisLoading(false)
-    })
+      },
+    }).then(async (res) => {
+      const all_contacts = await res.json(); // GETTING ALL CONTACTS FROM MONGO DB
+      setArrayContacts(all_contacts); // SETTING ALL CONTACTS INSIDE THE STATE FOR DISPLAY IN JSX/HTML
+      setisLoading(false);
+    });
   },[])
 
 
