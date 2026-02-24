@@ -38,14 +38,13 @@ const AddContact = () => {
     console.log(dataTosend);
 
 
-    fetch("http://localhost:3000/contacts/add-contact", {
+    fetch("http://3.87.45.74/contacts/add-contact", {
       method: "POST",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataTosend),
-      
     }).then(async (res) => {
       const response = await res.json();
       alert(`${response.message}`);

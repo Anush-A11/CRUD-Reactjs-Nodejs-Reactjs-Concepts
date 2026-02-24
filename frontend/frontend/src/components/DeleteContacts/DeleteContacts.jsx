@@ -16,23 +16,21 @@ const DeleteContacts = () => {
 
   const handleDelete =()=>{
 
-    fetch(`http://localhost:3000/contacts/${id}`,{
-
-
-      method: 'DELETE',
+    fetch(`http://3.87.45.74/contacts/${id}`, {
+      method: "DELETE",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       credentials: "include",
-      
-    }).then(async(res)=>{
+    }).then(async (res) => {
+      const response = await res.json();
 
-      const response = await res.json()
+      alert(
+        `Deletion Successful for the contact with the name ${state.name} having email ${state.email}`,
+      );
 
-      alert(`Deletion Successful for the contact with the name ${state.name} having email ${state.email}`)
-      
-      navigate('/view-contacts')
-    })
+      navigate("/view-contacts");
+    });
 
 
 

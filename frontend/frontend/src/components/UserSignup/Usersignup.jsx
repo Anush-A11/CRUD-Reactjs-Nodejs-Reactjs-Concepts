@@ -10,28 +10,25 @@ const Usersignup = () => {
 
     const addUsertomongoDB = (data)=>{
 
-        fetch("http://localhost:3000/user/sign-up",{
-            method: "POST",
-            credentials: 'include',
-            headers:{
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(async(res)=>{
-            const response = await res.json();
+        fetch("http://3.87.45.74/user/sign-up", {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }).then(async (res) => {
+          const response = await res.json();
 
-          if(res.ok){
+          if (res.ok) {
             alert(response.message);
             reset();
             navigate("/");
-
-          }else{
+          } else {
             alert(response.message);
-            reset()
+            reset();
           }
-
-
-        })
+        });
 
 
     }
