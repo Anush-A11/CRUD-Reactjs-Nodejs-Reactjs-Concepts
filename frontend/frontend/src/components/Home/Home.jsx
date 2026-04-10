@@ -63,6 +63,8 @@ const Home = () => {
         <img src="/images/crm3.jpg" />
       </div>
     </div>
+
+    
   );
 }
 
