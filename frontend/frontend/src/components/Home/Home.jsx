@@ -38,7 +38,6 @@ const Home = () => {
     <div>
       <h1>Welcome to Contact Management App</h1>
 
-
       <ul>
         <li onClick={() => AddContactsNavigate()} tabIndex={0}>
           Add Contact
@@ -48,6 +47,11 @@ const Home = () => {
         </li>
         <li tabIndex={0}>Delete / Update Contacts</li>
       </ul>
+
+      <div>
+        <h2>COMMIT 1</h2>
+        <img src="/public/images/crm1.jpg" />
+      </div>
     </div>
   );
 }
