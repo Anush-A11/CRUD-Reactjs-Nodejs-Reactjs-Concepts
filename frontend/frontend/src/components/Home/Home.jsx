@@ -50,7 +50,7 @@ const Home = () => {
 
       <div>
         <h2>COMMIT 1</h2>
-        <img src="/public/images/crm1.jpg" />
+        <img src="/images/crm1.jpg" />
       </div>
     </div>
   );
