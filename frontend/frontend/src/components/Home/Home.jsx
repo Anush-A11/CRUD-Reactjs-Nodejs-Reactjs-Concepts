@@ -52,7 +52,19 @@ const Home = () => {
         <h2>COMMIT 1</h2>
         <img src="/images/crm1.jpg" />
       </div>
+
+      <div>
+        <h2>COMMIT 2</h2>
+        <img src="/images/crm2.jpg" />
+      </div>
+
+      <div>
+        <h2>COMMIT 3</h2>
+        <img src="/images/crm3.jpg" />
+      </div>
     </div>
+
+    
   );
 }
 
